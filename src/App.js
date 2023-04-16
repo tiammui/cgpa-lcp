@@ -13,7 +13,7 @@ import Topbar from './components/Topbar';
 // import { SnackBar } from './components/bigComponents';
 
 export default function App() {
-  useEffect(() => {
+  useEffect(() => { 
     WebFont.load({
       google: {
         families: ['Catamaran', 'Blogger Sans'],

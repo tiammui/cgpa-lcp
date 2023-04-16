@@ -10,17 +10,17 @@
 
 html,body{
   font-family: var(--font-regular);
-  color: var(--color-dark-text);
+  color: var(--color-text-primary);
   font-size: var(--font-size-default);
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
   position: relative;
-  background-color: var(--color-primary-bg);
+  background-color: var(--color-bg-secondary);
 }
 button{
   transition: 500ms;
   cursor: pointer;
   border: none;
-  font-family: var(--font-regular);
+  font-family: var(--font-title);
 }
 button:hover, button:focus{
   background-color: #bbb!important;
