@@ -9,24 +9,25 @@ import {
   faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 
+import logo from "./../images/logo.png";
+
 export default function () {
   return (
-    <div id="top-bar">
+    <div id="top-bar" className="card">
       <Link to="/" className="logo" title="Go to homepage">
         <img
-          src="https://storage.cloud.google.com/glow-dab38.appspot.com/general/logo_topbar.png?alt=media"
+          src={logo}
+          height="30px"
           alt="logo"
         />
       </Link>
 
       <button
-        className="icon-block"
+      className='menu-btn'
         title="Open menu"
-        onClick={() => {
-          showMenuHnd(true);
-        }}
+        onClick={() => {}}
       >
-        <FontAwesomeIcon icon={faBars} />
+        <FontAwesomeIcon icon={faBars}/>
       </button>
     </div>
   );

@@ -7,7 +7,11 @@
 :root {
   --font-regular: 'Blogger Sans', Helvetica, sans-serif;
   --font-title: 'Catamaran', Helvetica, sans-serif;
-  --font-size-default: 16px; /* 1rem, 32px=2rem */
+  --font-size-default: 16px; /* 1rem, 20px=1.25rem, 24px=1.5rem, 32px=2rem */
+  --font-size-subtitle: 1.25rem;
+  --font-size-title: 1.5rem;
+  --font-weight-title: 700;
+  --font-weight-regular: 400;
 
   --hue-white: #fff;
   --hue-main-dark: #121B22;
@@ -22,23 +26,25 @@
   --hue-red: #E83A46;
   --hue-d9d9d9: #dadada;
 
-  --border-radius: 10px;
-  --shadow-text:  1px 1px 0px rgba(0, 0, 0, 0.25);
-  --shadow-card:  0 2px 4px rgba(0, 0, 0, 0.25);
+  --border-radius-regular: 10px;
+  --border-radius-note: 5px;
+  --shadow-text: 1px 1px 0px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --border-card: 1px solid var(--color-border-card);
 
 
-  --color-primary-bg: #f2f2f2;
-  --color-secondary-bg: #fff;
-  --color-section-bg: #f8f8f8;
-  --color-light-primary: #ff88d7;
-  --color-light-primary-40: rgba(255, 136, 215, 0.4);
-  --color-dark-light-primary: #ce90b9;
-  --color-dark-primary: #5c2048;
-  --color-secondary: #00acac;
-  --color-serious: #0082AB;
-  --color-serious-hover: #005b77;
-  --color-attention: #ab0707;
-  --color-attention-highlight: #fff0a0;
+  // --color-primary-bg: #f2f2f2;
+  // --color-secondary-bg: #fff;
+  // --color-section-bg: #f8f8f8;
+  // --color-light-primary: #ff88d7;
+  // --color-light-primary-40: rgba(255, 136, 215, 0.4);
+  // --color-dark-light-primary: #ce90b9;
+  // --color-dark-primary: #5c2048;
+  // --color-secondary: #00acac;
+  // --color-serious: #0082AB;
+  // --color-serious-hover: #005b77;
+  // --color-attention: #ab0707;
+  // --color-attention-highlight: #fff0a0;
 
   --color-dark-text: #484848;
   --text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
@@ -48,6 +54,13 @@
   --border-btn: 1px solid var(--color-light-primary);
   --length-mobile-max: 600px;
 }
+@mixin card{
+  border-radius: var(--border-radius-regular);
+  box-shadow: var(--shadow-card);
+  border: var(--border-card);
+  background: var(--color-bg-primary);
+}
+
 
 
 // focus: Default style Imports- must be at the top
@@ -74,27 +87,33 @@ body{
   &.dark{//Dark Theme
     --color-warning:var(--hue-light-red);
     --color-bg-primary:var(--hue-main-dark);
-    --color-bg-head:var(--hue-white);
-    --color-text-primary:var(--hue-dark-grey);
+    --color-bg-head:var(--hue-secondary-dark);
+    --color-text-primary:var(--hue-white);
     --color-text-head:var(--hue-dark-grey);
     --color-text-secondary:var(--hue-light-grey);
-    --color-bg-secondary:var(--hue-light-grey);
+    --color-bg-secondary:var(--hue-dark-grey);
     --color-text-link:var(--hue-blue);
     --color-bg-button-from:var(--hue-main-green);
     --color-bg-button-to:var(--hue-dark-green);
-    --color-bg-footer:var(--hue-dark-grey);// confusion, --hue-secondary-dark, --hue-main-dark
+    --color-bg-footer:var(--hue-secondary-dark);// confusion, --hue-secondary-dark, --hue-main-dark
     --color-text-footer:var(--hue-white);
     --color-border-card:var(--hue-d9d9d9);
     --color-border-input:var(--hue-light-grey);
+
+    .card{
+      background-color: var(--color-bg-head);
+      border-color:var(--color-border-card) ;
     }
+  }
 }
 
 // focus: IDs
 #top-bar{
   width: 100%;
-  background: #FFFFFF;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 10px 10px;  position:fixed;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  // box-shadow: none;
+  position:fixed;
   top: 0;
   left: 0;
   z-index: 1;
@@ -154,7 +173,16 @@ body{
 }
 
 // focus: Classes
-
+.card{
+  @include card()
+}
+.menu-btn{
+  font-size: var(--font-title)
+}
+.note-card{
+  @include card();
+  box-shadow: none;
+}
 
 // focus: Attributes
 
