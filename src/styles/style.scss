@@ -1,0 +1,175 @@
+// NOTE: DO NOT FORGET TO USE RELATIVE UNITS FOR FONTS (rem)
+// NOTE: STYLE WITH MOBILE-FIRST MINDSET (600px and below)
+
+// focus: Fonts
+
+// focus: Initializing Variables (must be above import of defaults.scss)
+:root {
+  --font-regular: 'Blogger Sans', Helvetica, sans-serif;
+  --font-title: 'Catamaran', Helvetica, sans-serif;
+  --font-size-default: 16px; /* 1rem, 32px=2rem */
+
+  --hue-white: #fff;
+  --hue-main-dark: #121B22;
+  --hue-secondary-dark: #1F2C34;
+  --hue-light-green: #DCF8C6;
+  --hue-main-green: #128C7E;
+  --hue-dark-green: #075E54;
+  --hue-light-grey: #8596A0;
+  --hue-dark-grey: #435A64;
+  --hue-blue: #34B7F1;
+  --hue-light-red: #ECE5DD;
+  --hue-red: #E83A46;
+  --hue-d9d9d9: #dadada;
+
+  --border-radius: 10px;
+  --shadow-text:  1px 1px 0px rgba(0, 0, 0, 0.25);
+  --shadow-card:  0 2px 4px rgba(0, 0, 0, 0.25);
+
+
+  --color-primary-bg: #f2f2f2;
+  --color-secondary-bg: #fff;
+  --color-section-bg: #f8f8f8;
+  --color-light-primary: #ff88d7;
+  --color-light-primary-40: rgba(255, 136, 215, 0.4);
+  --color-dark-light-primary: #ce90b9;
+  --color-dark-primary: #5c2048;
+  --color-secondary: #00acac;
+  --color-serious: #0082AB;
+  --color-serious-hover: #005b77;
+  --color-attention: #ab0707;
+  --color-attention-highlight: #fff0a0;
+
+  --color-dark-text: #484848;
+  --text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  --color-curtain-40: rgba(0, 0, 0, 0.4);
+
+  --border-item: 1px solid #ffffff;
+  --border-btn: 1px solid var(--color-light-primary);
+  --length-mobile-max: 600px;
+}
+
+
+// focus: Default style Imports- must be at the top
+@import "./_defaults";
+
+// focus: Element
+body{
+  // Light Theme
+  --color-warning:var(--hue-red);
+  --color-bg-primary:var(--hue-white);
+  --color-bg-head:var(--hue-white);
+  --color-text-primary:var(--hue-dark-grey);
+  --color-text-head:var(--hue-dark-grey);
+  --color-text-secondary:var(--hue-light-grey);
+  --color-bg-secondary:var(--hue-light-grey);
+  --color-text-link:var(--hue-blue);
+  --color-bg-button-from:var(--hue-main-green);
+  --color-bg-button-to:var(--hue-dark-green);
+  --color-bg-footer:var(--hue-dark-grey);// confusion, --hue-secondary-dark, --hue-main-dark, --hue-dark-grey
+  --color-text-footer:var(--hue-white);
+  --color-border-card:var(--hue-d9d9d9);
+  --color-border-input:var(--hue-light-grey);
+
+  &.dark{//Dark Theme
+    --color-warning:var(--hue-light-red);
+    --color-bg-primary:var(--hue-main-dark);
+    --color-bg-head:var(--hue-white);
+    --color-text-primary:var(--hue-dark-grey);
+    --color-text-head:var(--hue-dark-grey);
+    --color-text-secondary:var(--hue-light-grey);
+    --color-bg-secondary:var(--hue-light-grey);
+    --color-text-link:var(--hue-blue);
+    --color-bg-button-from:var(--hue-main-green);
+    --color-bg-button-to:var(--hue-dark-green);
+    --color-bg-footer:var(--hue-dark-grey);// confusion, --hue-secondary-dark, --hue-main-dark
+    --color-text-footer:var(--hue-white);
+    --color-border-card:var(--hue-d9d9d9);
+    --color-border-input:var(--hue-light-grey);
+    }
+}
+
+// focus: IDs
+#top-bar{
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 10px 10px;  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+}
+#main-container{
+  height: auto;
+  min-height: 100vh;
+
+  padding-top: 80px;
+}
+#modals {
+  &>* {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: rgba(0, 0, 0, 0.8);
+    animation: modal-fade 1s forwards;
+
+    &.super {
+      z-index: 4;
+      overflow: auto;
+    }
+    &.show{
+      display: block;
+    }
+  }
+  .modal-body {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 32px;
+    text-align: center;
+    text-shadow: none;
+    background: white;
+    padding: 10px;
+  }
+  .modal-content {
+    padding: 0 30px 20px 30px;
+    text-align: left;
+  }  
+}
+
+// focus: Classes
+
+
+// focus: Attributes
+
+
+// focus: Animations
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+// focus: Responsive style Import- must be at the bottom
+@import "./responsive";
