@@ -10,6 +10,7 @@
 
 html,body{
   font-family: var(--font-regular);
+  font-weight: var(--font-weight-regular);
   color: var(--color-text-primary);
   font-size: var(--font-size-default);
   scroll-behavior: smooth;
@@ -20,7 +21,8 @@ button{
   transition: 500ms;
   cursor: pointer;
   border: none;
-  font-family: var(--font-title);
+  font-size: var(--font-size-default);
+  font-family: var(--font-regular);
 }
 button:hover, button:focus{
   background-color: #bbb!important;

@@ -30,7 +30,6 @@
   --border-radius-note: 5px;
   --shadow-text: 1px 1px 0px rgba(0, 0, 0, 0.25);
   --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.25);
-  --border-card: 1px solid var(--color-border-card);
 
 
   // --color-primary-bg: #f2f2f2;
@@ -84,6 +83,8 @@ body{
   --color-border-card:var(--hue-d9d9d9);
   --color-border-input:var(--hue-light-grey);
 
+  --border-card: 1px solid var(--color-border-card);
+
   &.dark{//Dark Theme
     --color-warning:var(--hue-light-red);
     --color-bg-primary:var(--hue-main-dark);
@@ -102,7 +103,7 @@ body{
 
     .card{
       background-color: var(--color-bg-head);
-      border-color:var(--color-border-card) ;
+      border-color:var(--color-border-card);
     }
   }
 }
@@ -176,13 +177,47 @@ body{
 .card{
   @include card()
 }
-.menu-btn{
-  font-size: var(--font-title)
-}
 .note-card{
   @include card();
   box-shadow: none;
 }
+
+.menu{
+  position: relative;
+  &:hover .menu-body{
+    display: block;
+  }
+}
+.menu-body{
+  display: none;
+  position: absolute;
+  top:33px;
+  right: 0;
+  width: 170px;
+  padding: 6px 10px;
+  & button{
+    width: 100%;
+    height: 35px;
+    border-bottom: 1px solid var(--color-border-card);
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    padding-left: 10px;
+    &:last-child{
+      border:none;
+    }
+  }
+}
+.menu-icon{
+  font-size: var(--font-size-subtitle);
+}
+.menu-btn{
+  background-color: transparent;
+  font-size: var(--font-size-subtitle);
+  padding: 5px;
+}
+
 
 // focus: Attributes
 

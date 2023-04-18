@@ -9,26 +9,22 @@ import {
   faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 
-import logo from "./../images/logo.png";
+// import logo from "./../images/logo.png";
+
+import Menu from './Menu';
 
 export default function () {
   return (
     <div id="top-bar" className="card">
       <Link to="/" className="logo" title="Go to homepage">
         <img
-          src={logo}
+          // src={logo}
           height="30px"
           alt="logo"
         />
       </Link>
 
-      <button
-      className='menu-btn'
-        title="Open menu"
-        onClick={() => {}}
-      >
-        <FontAwesomeIcon icon={faBars}/>
-      </button>
+      <Menu />
     </div>
   );
 }
