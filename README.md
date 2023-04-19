@@ -1,3 +1,3 @@
 # cgpa-lcp
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/cgpa-lcp)
+Enable student check their GPA and CGPA in nigeria

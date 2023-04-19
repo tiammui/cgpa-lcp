@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
 import './styles/style.scss';
-// import { ROUTE_PATHS } from './utils/enums';
+import { ROUTE_PATHS } from './utils/enums';
 
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
