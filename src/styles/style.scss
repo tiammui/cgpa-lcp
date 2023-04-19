@@ -14,23 +14,22 @@
   --font-weight-regular: 400;
 
   --hue-white: #fff;
-  --hue-main-dark: #121B22;
-  --hue-secondary-dark: #1F2C34;
-  --hue-light-green: #DCF8C6;
-  --hue-main-green: #128C7E;
-  --hue-dark-green: #075E54;
-  --hue-light-grey: #8596A0;
-  --hue-dark-grey: #435A64;
-  --hue-blue: #34B7F1;
-  --hue-light-red: #ECE5DD;
-  --hue-red: #E83A46;
+  --hue-main-dark: #121b22;
+  --hue-secondary-dark: #1f2c34;
+  --hue-light-green: #dcf8c6;
+  --hue-main-green: #128c7e;
+  --hue-dark-green: #075e54;
+  --hue-light-grey: #8596a0;
+  --hue-dark-grey: #435a64;
+  --hue-blue: #34b7f1;
+  --hue-light-red: #ece5dd;
+  --hue-red: #e83a46;
   --hue-d9d9d9: #dadada;
 
   --border-radius-regular: 10px;
   --border-radius-note: 5px;
   --shadow-text: 1px 1px 0px rgba(0, 0, 0, 0.25);
   --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.25);
-
 
   // --color-primary-bg: #f2f2f2;
   // --color-secondary-bg: #fff;
@@ -53,85 +52,88 @@
   --border-btn: 1px solid var(--color-light-primary);
   --length-mobile-max: 600px;
 }
-@mixin card{
+@mixin card {
   border-radius: var(--border-radius-regular);
   box-shadow: var(--shadow-card);
   border: var(--border-card);
   background: var(--color-bg-primary);
 }
 
-
-
 // focus: Default style Imports- must be at the top
-@import "./_defaults";
+@import './_defaults';
 
 // focus: Element
-body{
+body {
   // Light Theme
-  --color-warning:var(--hue-red);
-  --color-bg-primary:var(--hue-white);
-  --color-bg-head:var(--hue-white); 
-  --color-text-primary:var(--hue-dark-grey);
-  --color-text-head:var(--hue-dark-grey);
-  --color-text-secondary:var(--hue-light-grey);
-  --color-bg-secondary:var(--hue-light-grey);
-  --color-text-link:var(--hue-blue);
-  --color-bg-button-from:var(--hue-main-green);
-  --color-bg-button-to:var(--hue-dark-green);
-  --color-bg-footer:var(--hue-dark-grey);// confusion, --hue-secondary-dark, --hue-main-dark, --hue-dark-grey
-  --color-text-footer:var(--hue-white);
-  --color-border-card:var(--hue-d9d9d9);
-  --color-border-input:var(--hue-light-grey);
+  --color-warning: var(--hue-red);
+  --color-bg-primary: var(--hue-white);
+  --color-bg-head: var(--hue-white);
+  --color-text-primary: var(--hue-dark-grey);
+  --color-text-head: var(--hue-dark-grey);
+  --color-text-secondary: var(--hue-light-grey);
+  --color-bg-secondary: var(--hue-light-grey);
+  --color-text-link: var(--hue-blue);
+  --color-bg-button-from: var(--hue-main-green);
+  --color-bg-button-to: var(--hue-dark-green);
+  --color-bg-footer: var(
+    --hue-dark-grey
+  ); // confusion, --hue-secondary-dark, --hue-main-dark, --hue-dark-grey
+  --color-text-footer: var(--hue-white);
+  --color-border-card: var(--hue-d9d9d9);
+  --color-border-input: var(--hue-light-grey);
 
   --border-card: 1px solid var(--color-border-card);
 
-  &.dark{//Dark Theme
-    --color-warning:var(--hue-light-red);
-    --color-bg-primary:var(--hue-main-dark);
-    --color-bg-head:var(--hue-secondary-dark);
-    --color-text-primary:var(--hue-white);
-    --color-text-head:var(--hue-dark-grey);
-    --color-text-secondary:var(--hue-light-grey);
-    --color-bg-secondary:var(--hue-dark-grey);
-    --color-text-link:var(--hue-blue);
-    --color-bg-button-from:var(--hue-main-green);
-    --color-bg-button-to:var(--hue-dark-green);
-    --color-bg-footer:var(--hue-secondary-dark);// confusion, --hue-secondary-dark, --hue-main-dark
-    --color-text-footer:var(--hue-white);
-    --color-border-card:var(--hue-d9d9d9);
-    --color-border-input:var(--hue-light-grey);
+  &.dark {
+    //Dark Theme
+    --color-warning: var(--hue-light-red);
+    --color-bg-primary: var(--hue-main-dark);
+    --color-bg-head: var(--hue-secondary-dark);
+    --color-text-primary: var(--hue-white);
+    --color-text-head: var(--hue-dark-grey);
+    --color-text-secondary: var(--hue-light-grey);
+    --color-bg-secondary: var(--hue-dark-grey);
+    --color-text-link: var(--hue-blue);
+    --color-bg-button-from: var(--hue-main-green);
+    --color-bg-button-to: var(--hue-dark-green);
+    --color-bg-footer: var(
+      --hue-secondary-dark
+    ); // confusion, --hue-secondary-dark, --hue-main-dark
+    --color-text-footer: var(--hue-white);
+    --color-border-card: var(--hue-d9d9d9);
+    --color-border-input: var(--hue-light-grey);
 
-    .card{
+    .card {
       background-color: var(--color-bg-head);
-      border-color:var(--color-border-card);
+      border-color: var(--color-border-card);
     }
   }
 }
 
 // focus: IDs
-#top-bar{
+#top-bar {
   width: 100%;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   // box-shadow: none;
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   height: 60px;
 }
-#main-container{
+#main-container {
   height: auto;
   min-height: 100vh;
 
   padding-top: 80px;
 }
 #modals {
-  &>* {
+  & > * {
     display: none;
     position: fixed;
     z-index: 3;
@@ -148,7 +150,7 @@ body{
       z-index: 4;
       overflow: auto;
     }
-    &.show{
+    &.show {
       display: block;
     }
   }
@@ -170,57 +172,57 @@ body{
   .modal-content {
     padding: 0 30px 20px 30px;
     text-align: left;
-  }  
+  }
 }
 
 // focus: Classes
-.card{
-  @include card()
+.card {
+  @include card();
 }
-.note-card{
+.note-card {
   @include card();
   box-shadow: none;
 }
 
-.menu{
+.menu {
   position: relative;
-  &:hover .menu-body{
+  &:hover .menu-body,
+  &:focus-within .menu-body {
     display: block;
   }
 }
-.menu-body{
+.menu-body {
   display: none;
   position: absolute;
-  top:33px;
+  top: 33px;
   right: 0;
   width: 170px;
   padding: 6px 10px;
-  & button{
+  border-top-right-radius: 0;
+  & button {
     width: 100%;
     height: 35px;
     border-bottom: 1px solid var(--color-border-card);
     background-color: inherit;
     display: flex;
     align-items: center;
-    gap:10px;
+    gap: 10px;
     padding-left: 10px;
-    &:last-child{
-      border:none;
+    &:last-child {
+      border: none;
     }
   }
 }
-.menu-icon{
+.menu-icon {
   font-size: var(--font-size-subtitle);
 }
-.menu-btn{
+.menu-btn {
   background-color: transparent;
   font-size: var(--font-size-subtitle);
   padding: 5px;
 }
 
-
 // focus: Attributes
-
 
 // focus: Animations
 @keyframes modal-fade {
@@ -233,6 +235,5 @@ body{
   }
 }
 
-
 // focus: Responsive style Import- must be at the bottom
-@import "./responsive";
+@import './responsive';
