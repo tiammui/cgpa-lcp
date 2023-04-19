@@ -31,6 +31,11 @@
   --shadow-text: 1px 1px 0px rgba(0, 0, 0, 0.25);
   --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.25);
 
+  --space:10px;
+  --space2:20px;
+  --space3:30px;
+  --space4:40px;
+
   // --color-primary-bg: #f2f2f2;
   // --color-secondary-bg: #fff;
   // --color-section-bg: #f8f8f8;
@@ -298,6 +303,7 @@ body {
   }
   .tab-body{
     background-color: var(--color-bg-primary);
+    padding: var(--space2) var(--space) var(--space4) var(--space);
   }
 }
 
