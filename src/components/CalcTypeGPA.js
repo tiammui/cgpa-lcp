@@ -12,9 +12,10 @@ import {
 export default function () {
   return (
     <div id="">
-      GPA here
-      <div className="note-card">
-        <h3>GPA</h3>
+      <div className="term-note note-card">
+        <h3>GPA - Grade Point Average</h3>
+        <p>GPA calculation only take one semester into consideration.</p>
+        <p>CGPA calculation takes multiple semester into consideration.</p>
       </div>
     </div>
   );
