@@ -3,6 +3,7 @@
 
 // focus: Fonts
 
+
 // focus: Initializing Variables (must be above import of defaults.scss)
 :root {
   --font-regular: 'Blogger Sans', Helvetica, sans-serif;
@@ -77,6 +78,7 @@
 
 // focus: Element
 h3 {
+  font-family: var(--font-title);
   font-size: var(--font-regular);
   line-height: var(--line-height-tilte);
   margin-bottom: var(--space);

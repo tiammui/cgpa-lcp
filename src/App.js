@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
+import './fonts/fonts.css';
 import './styles/style.scss';
 import { ROUTE_PATHS } from './utils/enums';
 
@@ -17,11 +18,14 @@ export default function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ['Catamaran', 'Blogger Sans'],
+        families: ['Catamaran','Blogger Sans'],
       },
+      // custom: {
+      //   families: ['Blogger Sans'],
+      //   urls:['./fonts/fonts.scss']
+      // },
     });
   }, []);
-  console.log(ROUTE_PATHS);
   return (
     <>
       <Topbar />

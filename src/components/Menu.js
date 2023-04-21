@@ -13,7 +13,7 @@ export default function () {
     <div className="menu">
       <button
       className='menu-btn'
-        ariaLabel="Open menu"
+        // ariaLabel="Open menu"
         onClick={() => {}}
       >
         <FontAwesomeIcon icon={faBars}/>
