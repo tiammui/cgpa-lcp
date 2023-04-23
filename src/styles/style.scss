@@ -14,7 +14,7 @@
   --font-weight-title: 700;
   --font-weight-regular: 400;
   --line-height-regular: 1.09;
-  --line-height-tilte: 1.64;
+  --line-height-title: 1.64;
 
   --hue-white: #fff;
   --hue-main-dark: #121b22;
@@ -80,7 +80,7 @@
 h3 {
   font-family: var(--font-title);
   font-size: var(--font-regular);
-  line-height: var(--line-height-tilte);
+  line-height: var(--line-height-title);
   margin-bottom: var(--space);
 }
 
@@ -142,30 +142,8 @@ h3 {
   @include card();
   box-shadow: none;
 }
-.term-note {
-  position: relative;
-  max-width: 340px;
-  border-radius: var(--border-radius-note);
-  margin: 0 auto;
-  padding: var(--space2) var(--space3);
-
-  p {
-    margin-bottom: var(--space2);
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -1px;
-    width: var(--space);
-    border-radius: var(--border-radius-regular);
-    height: 100%;
-    background-color: var(--color-border-card);
-  }
+.pad-1{
+  padding: 0 var(--space);
 }
 
 // focus: Attributes
@@ -183,6 +161,7 @@ h3 {
 
 @import './components/Topbar';
 @import './components/Home_Tab';
+@import './components/term-note';
 
 // focus: Responsive style Import- must be at the bottom
 @import './responsive';

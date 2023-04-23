@@ -17,6 +17,11 @@ export default function () {
         <p>GPA calculation only take one semester into consideration.</p>
         <p>CGPA calculation takes multiple semester into consideration.</p>
       </div>
+      <div className='pad-1'>
+        <h3>FOR LCP STUDENTS</h3>
+        <p>If you're not a student of LCP click here</p>
+
+      </div>
     </div>
   );
 }
