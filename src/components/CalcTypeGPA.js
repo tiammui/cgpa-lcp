@@ -3,58 +3,74 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBars,
-  faShoppingCart,
-  faUserAlt,
-  faUserCircle,
-  faSignOut,
+  faExclamationCircle,
+  faChevronRight,
+  faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
-import { InputCon, Spacer } from './components';
+import { InputCon, Spacer, TermNote, InfoNote, Button } from './components';
+import { ROUTE_PATHS } from './../utils/enums';
 
 export default function () {
-  let { lcpGpaForm, setLcpGpaForm } = useState({});
+  let [lcpGpaForm, setLcpGpaForm] = useState({});
 
-  function lcpGpaFormChangeHnd(name, e) {
+  function lcpGpaFormChangeHnd(e) {
     const elem = e.target;
-    console.log(name, e);
-    setLcpGpaForm((prev) => ({ ...prev, [name]: elem.value }));
+    setLcpGpaForm((prev) => ({ ...prev, [elem.name]: elem.value }));
+  }
+  function lcpGpaFormSubmitHnd(e) {
+    e.preventDefault();
+    console.log(lcpGpaForm);
   }
   return (
     <div id="">
-      <div className="term-note note-card">
-        <h3>GPA - Grade Point Average</h3>
-        <p>GPA calculation only take one semester into consideration.</p>
-        <p>CGPA calculation takes multiple semester into consideration.</p>
-      </div>
-      <div className="pad-1">
-        <h3>FOR LCP STUDENTS</h3>
-        <p>If you're not a student of LCP click here</p>
-        <Spacer axis="y" spaceRatio={3}></Spacer>
-        {/* <InputCon label="Lopuu"  inputType="text" placeholder="Choose dept" /> */}
-        <InputCon
-          formName="lcp-gpa"
-          label="department"
-          inputType="select"
-          selectType={'department'}
-          defaultValue={lcpGpaForm}
-          changeHnd={lcpGpaFormChangeHnd}
+      <TermNote
+        heading="GPA - Grade Point Average"
+        texts={[
+          'GPA calculation only take one semester into consideration.',
+          'CGPA calculation takes multiple semester into consideration.',
+        ]}
+      />
+      <form onSubmit={lcpGpaFormSubmitHnd}>
+        <div className="pad-1">
+          <h3>FOR LCP STUDENTS</h3>
+          <p>
+            If you're not a student of LCP <a href=""> click here</a>
+          </p>
+          <Spacer axis="y" spaceRatio={3}></Spacer>
+          {/* <InputCon label="Lopuu"  inputType="text" placeholder="Choose dept" /> */}
+          <InputCon
+            inputName="lcp-gpa-department"
+            inputType="select"
+            selectType={'department'}
+            defaultValue={lcpGpaForm['lcp-gpa-department']}
+            changeHnd={lcpGpaFormChangeHnd}
+          />
+          <InputCon
+            inputName="lcp-gpa-program"
+            inputType="select"
+            selectType={'program'}
+            defaultValue={lcpGpaForm['lcp-gpa-program']}
+            changeHnd={lcpGpaFormChangeHnd}
+          />
+          <InputCon
+            inputName="lcp-gpa-semester"
+            inputType="select"
+            selectType={'semester'}
+            defaultValue={lcpGpaForm['lcp-gpa-semester']}
+            changeHnd={lcpGpaFormChangeHnd}
+          />
+          <Spacer axis="y" spaceRatio={2}></Spacer>
+        </div>
+        <InfoNote
+          text={
+            'For LCP student, the GPA calculation is done using LCP grading system.'
+          }
+          link=""
         />
-        <InputCon
-          formName="lcp-gpa"
-          label="program"
-          inputType="select"
-          selectType={'program'}
-          changeHnd={lcpGpaFormChangeHnd}
-        />
-        <InputCon
-          formName="lcp-gpa"
-          label="semester"
-          inputType="select"
-          selectType={'semester'}
-          changeHnd={lcpGpaFormChangeHnd}
-        />
-        <Spacer axis="y" spaceRatio={2}></Spacer>
-      </div>
+        <Button styleType="a" text="proceed" />
+        <Button styleType="b" text="add semester 5 GPA" />
+      </form>
     </div>
   );
 }

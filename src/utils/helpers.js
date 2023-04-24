@@ -1,9 +1,11 @@
 /**
- * Capitalise first letter of a word
- * @param {string} word
+ * Capitalise every word of a string
+ * @param {string} str
  */
-export function capFirstLetter(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1);
+export function capitalizeWords(str) {
+  return str.replace(/\b\w/g, function(match) {
+    return match.toUpperCase();
+  });
 }
 
 export function toCamelCase(str) {

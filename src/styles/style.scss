@@ -5,12 +5,14 @@
 
 // focus: Initializing Variables (must be above import of defaults.scss)
 :root {
-  --font-regular: "Blogger Sans", Helvetica, sans-serif;
-  --font-title: "Catamaran", Helvetica, sans-serif;
-  --font-size-default: 16px; /* 1rem, 13px=0.8125rem, 20px=1.25rem, 24px=1.5rem, 32px=2rem */
+  --font-regular: 'Blogger Sans', Helvetica, sans-serif;
+  --font-title: 'Catamaran', Helvetica, sans-serif;
+  --font-size-default: 16px; /* 1rem, 13px=0.8125rem, 18px=1.125rem, 20px=1.25rem, 24px=1.5rem, 32px=2rem, 40px=2.5rem */
   --font-size-hint: 0.8125rem;
+  --font-size-button: 1.125rem;
   --font-size-subtitle: 1.25rem;
   --font-size-title: 1.5rem;
+  --font-size-info-icon: 2.5rem;
   --font-weight-title: 700;
   --font-weight-regular: 400;
   --line-height-regular: 1.09;
@@ -30,34 +32,20 @@
   --hue-d9d9d9: #dadada;
 
   --border-radius-regular: 10px;
-  --border-radius-note: 5px;
+  --border-radius-note: calc(var(--border-radius-regular) / 2);
   --shadow-text: 1px 1px 0px rgba(0, 0, 0, 0.25);
   --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.25);
 
   --space: 10px;
-  --space2: 20px;
-  --space3: 30px;
-  --space4: 40px;
+  --space2: calc(var(--space) * 2);
+  --space3: calc(var(--space) * 3);
+  --space4: calc(var(--space) * 4);
 
-  // --color-primary-bg: #f2f2f2;
-  // --color-secondary-bg: #fff;
-  // --color-section-bg: #f8f8f8;
-  // --color-light-primary: #ff88d7;
-  // --color-light-primary-40: rgba(255, 136, 215, 0.4);
-  // --color-dark-light-primary: #ce90b9;
-  // --color-dark-primary: #5c2048;
-  // --color-secondary: #00acac;
-  // --color-serious: #0082AB;
-  // --color-serious-hover: #005b77;
-  // --color-attention: #ab0707;
-  // --color-attention-highlight: #fff0a0;
+  --margin-input-status: calc(var(--space) / 5);
+  --length-info-icon: 75px;
+  --length-note-max-width: 340px;
+  --length-button-max-width: 250px;
 
-  --color-dark-text: #484848;
-  --text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
-  --color-curtain-40: rgba(0, 0, 0, 0.4);
-
-  --border-item: 1px solid #ffffff;
-  --border-btn: 1px solid var(--color-light-primary);
   --length-mobile-max: 600px;
 }
 @mixin card {
@@ -72,9 +60,9 @@
 }
 
 // focus: Default style Imports- must be at the top
-@import "./defaults";
+@import './defaults';
 
-@import "./components/Theme";
+@import './components/Theme';
 
 // focus: Element
 h3 {
@@ -83,8 +71,10 @@ h3 {
   line-height: var(--line-height-title);
   margin-bottom: var(--space);
 }
-a, .link{
+a,
+.link {
   color: var(--color-text-link);
+  font-weight: var(--font-weight-title);
 }
 
 // focus: IDs
@@ -138,93 +128,79 @@ a, .link{
 }
 
 // focus: Classes
+.btn {
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-button-from) 0%,
+    var(--color-bg-button-to) 100%
+  );
+  font-family: var(--font-title);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-title);
+  border-radius: var(--border-radius-regular);
+  max-width: var(--length-button-max-width);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 var(--space2);
+  @include white-text;
+
+  &:hover {
+    background: radial-gradient(
+      var(--color-bg-button-from) 0%,
+      var(--color-bg-button-to) 100%
+    );
+    @include white-text;
+  }
+
+  &.type-a {
+    height: 50px;
+    justify-content: space-between;
+  }
+  &.type-b {
+    flex-direction: row-reverse;
+    justify-content: left;
+    height: 40px;
+    padding-right: 0;
+    div:first-child {
+      width: 100%;
+    }
+  }
+
+  .icon {
+    font-size: var(--font-size-title);
+  }
+}
+
 .card {
   @include card();
 }
-.input-con {
+
+.info-note {
+  max-width: 340px;
   margin: 0 auto var(--space2) auto;
-  max-width: 250px;
 
-  input,
-  select {
-    position: relative;
-    border-radius: var(--border-radius-regular);
-    width: 100%;
-    height: 35px;
-    border: 1px solid var(--color-border-input);
-    padding: 0 var(--space);
-    background: var(--color-bg-primary);
-    color: var(--color-text-primary);
-    box-shadow: inset 0 0 2px var(--color-text-primary);
-  }
-  label {
-    margin-left: var(--space);
-    font-family: var(--font-title);
-    font-weight: var(--font-weight-title);
+  div:last-child {
+    border-top: var(--border-card);
+    text-align: center;
+    padding: var(--margin-input-status) 0;
   }
 
-  .error {
-    position: absolute;
-    display: none;
-    width: calc(100% - 10px);
-    top: 100%;
-    border-radius: 8px;
-    left: 0;
-    font-size: var(--font-size-hint);
-    background-color: white;
-    z-index: 10;
-    color: rgb(187, 0, 0);
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-
-    li {
-      list-style: circle;
-      margin: 5px;
-    }
-  }
   .info {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 12px;
-  }
-  .note {
-    b {
-    }
-  }
+    display: flex;
+    align-items: center;
 
-  [aria-invalid="true"] {
-    border: 2px solid black;
-    // border: 2px solid $negative-color;
-    background-color: red;
-    // background-color: $negative-light-color;
-    & ~ .error {
-      display: block;
+    .icon {
+      min-width: var(--length-info-icon);
+      height: var(--length-info-icon);
+      font-size: var(--font-size-info-icon);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
-
-// .input {
-//   margin-bottom: 20px;
-// }
-// .input label {
-//   display: block;
-//   margin-bottom: 5px;
-// }
-// .input input,
-// .input select,
-// .input textarea {
-//   height: 30px;
-//   max-width: 250px;
-//   width: 100%;
-//   border: 1px solid var(--color-dark-primary);
-//   border-radius: 4px;
-//   padding: 0 10px;
-// }
-// .input textarea {
-//   height: auto;
-//   padding: 5px 10px;
-// }
 
 .note-card {
   @include card();
@@ -247,9 +223,10 @@ a, .link{
   }
 }
 
-@import "./components/Topbar";
-@import "./components/Home_Tab";
-@import "./components/term-note";
+@import './components/Topbar';
+@import './components/Home_Tab';
+@import './components/term-note';
+@import './components/InputCon';
 
 // focus: Responsive style Import- must be at the bottom
-@import "./responsive";
+@import './responsive';
