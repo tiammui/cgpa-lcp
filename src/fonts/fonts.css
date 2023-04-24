@@ -1,10 +1,12 @@
 @font-face {
   font-family: 'Blogger Sans';
   src: url('./Blogger\ Sans/BloggerSans.eot'); /* IE9 Compat Modes */
-  src: url('./Blogger\ Sans/BloggerSans.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('./Blogger\ Sans/BloggerSans.woff') format('woff'), /* Modern Browsers */
-       url('./Blogger\ Sans/BloggerSans.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('./Blogger\ Sans/BloggerSans.svg#BloggerSans') format('svg'); /* Legacy iOS */
+  src: url('./Blogger\ Sans/BloggerSans.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */ url('./Blogger\ Sans/BloggerSans.woff') format('woff'),
+    /* Modern Browsers */ url('./Blogger\ Sans/BloggerSans.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('./Blogger\ Sans/BloggerSans.svg#BloggerSans') format('svg'); /* Legacy iOS */
   font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility;
