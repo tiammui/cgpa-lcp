@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { nanoid } from 'nanoid';
 
-import { capitalizeWords, fromCamelCase } from './../utils/helpers';
+import { capitalizeWords } from './../utils/helpers';
 
 export function Button({ styleType, text, actionHnd }) {
   const emptyFunc = () => {};
@@ -60,25 +60,25 @@ const semesterOptions = [
 ];
 export function InputCon({
   inputName,
+  labelText,
   placeholder,
   inputType,
   selectType,
   defaultValue,
   changeHnd,
 }) {
-  const labelText = capitalizeWords(fromCamelCase(inputName.split('-').at(-1)));
   return (
     <div className="input-con">
-      <label htmlFor={inputName}>
-        {capitalizeWords(fromCamelCase(labelText))}
-      </label>
+      <label htmlFor={inputName}>{capitalizeWords(labelText)}</label>
       {/* {(inputType == 'select' && (
         <SelectInput selectType={selectType} defaultValue={defaultValue} inputName={inputName} />
       )) || <TextInput placeholder={placeholder} defaultValue={defaultValue} inputName={inputName} />} */}
       {(inputType == 'select' && (
         <SelectInput {...{ selectType, defaultValue, inputName, changeHnd }} />
       )) || (
-        <TextInput {...{ placeholder, defaultValue, inputName, changeHnd }} />
+        <TextInput
+          {...{ placeholder, defaultValue, inputName, changeHnd, inputType }}
+        />
       )}
       <ul id={`${inputName}-error`} className="error">
         <li>Only alphabets are allowed</li>
@@ -144,11 +144,17 @@ function SelectInput({ selectType, defaultValue, inputName, changeHnd }) {
   );
 }
 
-function TextInput({ placeholder, defaultValue, inputName, changeHnd }) {
+function TextInput({
+  placeholder,
+  defaultValue,
+  inputName,
+  changeHnd,
+  inputType,
+}) {
   return (
     <input
-      type="text"
       id={inputName}
+      type={inputType}
       name={inputName}
       placeholder={placeholder}
       value={defaultValue || ''}

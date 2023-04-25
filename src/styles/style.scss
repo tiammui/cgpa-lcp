@@ -87,6 +87,9 @@ a,
   > * {
     margin-bottom: var(--space3);
   }
+  > *:last-child {
+    margin-bottom: 0;
+  }
 
   h4 {
     font-family: var(--font-title);

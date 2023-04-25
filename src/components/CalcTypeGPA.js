@@ -23,7 +23,7 @@ export default function () {
     console.log(lcpGpaForm);
   }
   return (
-    <div id="">
+    <div className="pad-1">
       <TermNote
         heading="GPA - Grade Point Average"
         texts={[
@@ -41,6 +41,7 @@ export default function () {
           {/* <InputCon label="Lopuu"  inputType="text" placeholder="Choose dept" /> */}
           <InputCon
             inputName="lcp-gpa-department"
+            labelText="department"
             inputType="select"
             selectType={'department'}
             defaultValue={lcpGpaForm['lcp-gpa-department']}
@@ -48,6 +49,7 @@ export default function () {
           />
           <InputCon
             inputName="lcp-gpa-program"
+            labelText="program"
             inputType="select"
             selectType={'program'}
             defaultValue={lcpGpaForm['lcp-gpa-program']}
@@ -55,6 +57,7 @@ export default function () {
           />
           <InputCon
             inputName="lcp-gpa-semester"
+            labelText="semester"
             inputType="select"
             selectType={'semester'}
             defaultValue={lcpGpaForm['lcp-gpa-semester']}
@@ -69,7 +72,6 @@ export default function () {
           link=""
         />
         <Button styleType="a" text="proceed" />
-        <Button styleType="b" text="add semester 5 GPA" />
       </form>
     </div>
   );
