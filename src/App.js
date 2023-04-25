@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 import GradingLCP from './pages/GradingLCP';
 import GradingNBTE from './pages/GradingNBTE';
 import Topbar from './components/Topbar';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 // import { SnackBar } from './components/bigComponents';
 
 export default function App() {
@@ -42,6 +42,7 @@ export default function App() {
           <Route path={ROUTE_PATHS.GRADING_LCP} element={<GradingLCP />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
     </>
   );

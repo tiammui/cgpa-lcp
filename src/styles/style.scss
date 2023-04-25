@@ -78,6 +78,32 @@ a,
 }
 
 // focus: IDs
+#footer {
+  background-color: var(--color-bg-footer);
+  color: var(--color-text-footer);
+  padding: var(--space3) var(--space);
+  text-align: center;
+
+  > * {
+    margin-bottom: var(--space3);
+  }
+
+  h4 {
+    font-family: var(--font-title);
+    line-height: var(--line-height-regular);
+  }
+
+  .copy {
+    font-family: var(--font-title);
+    font-weight: var(--font-weight-title);
+  }
+  .disclaimer {
+    display: flex;
+    justify-content: start;
+    gap: var(--space);
+    text-align: left;
+  }
+}
 #main-container {
   height: auto;
   min-height: 100vh;
@@ -177,35 +203,11 @@ a,
   @include card();
 }
 
-.info-note {
-  max-width: 340px;
-  margin: 0 auto var(--space2) auto;
-
-  div:last-child {
-    border-top: var(--border-card);
-    text-align: center;
-    padding: var(--margin-input-status) 0;
-  }
-
-  .info {
-    display: flex;
-    align-items: center;
-
-    .icon {
-      min-width: var(--length-info-icon);
-      height: var(--length-info-icon);
-      font-size: var(--font-size-info-icon);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-
 .note-card {
   @include card();
   box-shadow: none;
 }
+
 .pad-1 {
   padding: 0 var(--space);
 }
@@ -225,7 +227,8 @@ a,
 
 @import './components/Topbar';
 @import './components/Home_Tab';
-@import './components/term-note';
+@import './components/TermNote';
+@import './components/InfoNote';
 @import './components/InputCon';
 
 // focus: Responsive style Import- must be at the bottom
