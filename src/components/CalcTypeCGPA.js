@@ -13,7 +13,7 @@ import { InputCon, Spacer, TermNote, InfoNote, Button } from './components';
 import { averageScore } from './../utils/helpers';
 
 export default function () {
-  let [cgpaScores, setCgpaScores] = useState([50, 40]);
+  let [cgpaScores, setCgpaScores] = useState([0,0]);
   let [cgpaAverage, setCgpaAverage] = useState(0);
 
   useEffect(() => {
