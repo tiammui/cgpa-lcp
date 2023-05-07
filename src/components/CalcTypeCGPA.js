@@ -9,11 +9,18 @@ import {
   faUserCircle,
   faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import { InputCon, Spacer, TermNote, InfoNote, Button } from './components';
+import {
+  InputCon,
+  Spacer,
+  TermNote,
+  InfoNote,
+  Button,
+  ResultCard,
+} from './components';
 import { averageScore } from './../utils/helpers';
 
 export default function () {
-  let [cgpaScores, setCgpaScores] = useState([0,0]);
+  let [cgpaScores, setCgpaScores] = useState([0, 0]);
   let [cgpaAverage, setCgpaAverage] = useState(0);
 
   useEffect(() => {
@@ -77,6 +84,14 @@ export default function () {
           text={`add semester ${cgpaScores.length + 1} GPA`}
         />
       </div>
+      <Spacer axis="y" spaceRatio={4} />
+
+      <ResultCard
+        titleLeft="CGPA"
+        titleRight="Grade"
+        valueLeft={3.7}
+        valueRight="Upper Credit"
+      />
     </div>
   );
 }

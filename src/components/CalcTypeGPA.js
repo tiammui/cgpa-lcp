@@ -14,6 +14,8 @@ import { ROUTE_PATHS } from './../utils/enums';
 export default function () {
   let [lcpGpaForm, setLcpGpaForm] = useState({});
 
+  const navigate = useNavigate();
+
   function lcpGpaFormChangeHnd(e) {
     const elem = e.target;
     setLcpGpaForm((prev) => ({ ...prev, [elem.name]: elem.value }));
@@ -71,7 +73,7 @@ export default function () {
           }
           link=""
         />
-        <Button styleType="a" text="proceed" />
+        <Button styleType="a" text="proceed" actionHnd={()=>navigate('/gpa/lcp/semesterId')} />
       </form>
     </div>
   );

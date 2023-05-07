@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function () {
-  return <div id="">LCP grading</div>;
+  return <div id="">NBTE grading</div>;
 }
 
 // ANY ERROR ON GETTING THE APPROPRIATE SEMESTER DOC WILL TAKE USER TO "/"(homepage - gpa)

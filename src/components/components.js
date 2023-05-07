@@ -87,6 +87,21 @@ export function InputCon({
   );
 }
 
+export function ResultCard({titleLeft,titleRight,valueLeft, valueRight}) {
+  return (
+    <div className="result-card">
+      <div className="left">
+        <div className="title">{titleLeft}</div>
+        <div className="value">{valueLeft}</div>
+      </div>
+      <div className="right">
+        <div className="title">{titleRight}</div>
+        <div className="value">{valueRight}</div>
+      </div>
+    </div>
+  );
+}
+
 export function Spacer({ axis, spaceRatio }) {
   /**
    *
