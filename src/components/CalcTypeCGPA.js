@@ -9,13 +9,14 @@ import {
   faUserCircle,
   faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
+
 import {
   InputCon,
   Spacer,
   TermNote,
   InfoNote,
   Button,
-  ResultCard,
+  ResultBar,
 } from './components';
 import { averageScore } from './../utils/helpers';
 
@@ -86,7 +87,7 @@ export default function () {
       </div>
       <Spacer axis="y" spaceRatio={4} />
 
-      <ResultCard
+      <ResultBar
         titleLeft="CGPA"
         titleRight="Grade"
         valueLeft={3.7}

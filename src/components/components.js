@@ -7,6 +7,8 @@ import {
   faExclamationCircle,
   faChevronRight,
   faPlus,
+  faTimes,
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { nanoid } from 'nanoid';
 
@@ -24,6 +26,111 @@ export function Button({ styleType, text, actionHnd }) {
         <FontAwesomeIcon icon={styleType == 'b' ? faPlus : faChevronRight} />
       </div>
     </button>
+  );
+}
+export function CloseButton({ actionHnd }) {
+  const emptyFunc = () => {};
+  return (
+    <button className="close-btn" onClick={actionHnd || emptyFunc}>
+      <FontAwesomeIcon icon={faTimes} />
+    </button>
+  );
+}
+
+export function CourseCard({
+  id,
+  code,
+  units,
+  score
+}) {
+  return (
+    <div className="course-card card">
+    <div className="top">
+      <div>1/5</div>
+      <CloseButton />
+    </div>
+    <div className="inputs">
+      {/* <div className="course-input-con">
+        <label htmlFor="">Course Code:</label>
+        <Spacer axis="x" spaceRatio={1}></Spacer>
+        <input type="text" aria-invalid="false" />
+        <ul id={`-error`} className="error">
+          <li>Only alphabets are allowed</li>
+        </ul>
+
+        <div className="info">
+          <FontAwesomeIcon icon={faInfoCircle} />
+        </div>
+      </div> */}
+      <CourseInputCon
+        labelText="course code"
+        inputType="text"
+        inputName="course-id"
+        defaultValue=""
+        changeHnd={()=>(1)}
+      />
+      <CourseInputCon
+        labelText="course units"
+        inputType="number"
+        inputName="course-id"
+        defaultValue=""
+        changeHnd={()=>(1)}
+      />
+      <CourseInputCon
+        labelText="total score"
+        inputType="number"
+        inputName="course-id"
+        defaultValue=""
+        changeHnd={()=>(1)}
+      />
+    </div>
+    <div className="result">
+      <div className="grade">
+        <div className="title">Grade</div>
+        <div className="value">A+</div>
+      </div>
+      <div className="gpe">
+        <div className="title">GPE</div>
+        <div className="value">3.5</div>
+      </div>
+      <div className="gp">
+        <div className="title">GP</div>
+        <div className="value">15 / 20</div>
+      </div>
+    </div>
+  </div>
+
+  );
+}
+
+
+export function CourseInputCon({
+  inputName,
+  labelText,
+  defaultValue,
+  changeHnd,
+  inputType,
+  infoText,
+}) {
+  return (
+    <div className="course-input-con">
+      <label htmlFor={inputName}>{capitalizeWords(labelText)}:</label>
+      <Spacer axis="x" spaceRatio={1}></Spacer>
+      <input
+        type={inputType}
+        name={inputName}
+        value={defaultValue || ''}
+        aria-invalid="false"
+        onChange={changeHnd}
+      />
+      <ul id={`${inputName}-error`} className="error">
+        <li>Only alphabets are allowed</li>
+      </ul>
+
+      <div className="info">
+        <FontAwesomeIcon icon={faInfoCircle} />
+      </div>
+    </div>
   );
 }
 
@@ -87,9 +194,9 @@ export function InputCon({
   );
 }
 
-export function ResultCard({titleLeft,titleRight,valueLeft, valueRight}) {
+export function ResultBar({ titleLeft, titleRight, valueLeft, valueRight }) {
   return (
-    <div className="result-card">
+    <div className="result-bar bar">
       <div className="left">
         <div className="title">{titleLeft}</div>
         <div className="value">{valueLeft}</div>

@@ -43,7 +43,7 @@ export default function () {
             <button onClick={() => calcTypeHnd(CALC_TYPES.CGPA)}>CGPA</button>
           </div>
         </div>
-        <div className="tab-body">
+        <div className="tab-body page-container">
           {(isGPA() && <CalcTypeGPA />) || (isCGPA() && <CalcTypeCGPA />) || (
             <NotFound />
           )}{' '}

@@ -43,8 +43,10 @@
 
   --margin-input-status: calc(var(--space) / 5);
   --length-info-icon: 75px;
+  --length-close-btn: 30px;
   --length-note-max-width: 340px;
   --length-button-max-width: 250px;
+  --length-course-card-max-width: 320px;
 
   --length-mobile-max: 600px;
 }
@@ -74,6 +76,42 @@ h3 {
 a,
 .link {
   color: var(--color-text-link);
+  font-weight: var(--font-weight-title);
+}
+
+input,
+select {
+  border-radius: var(--border-radius-regular);
+  height: 35px;
+  border: 1px solid var(--color-border-input);
+  padding: 0 var(--space);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  box-shadow: inset 0 0 2px var(--color-text-primary);
+
+  & ~ .error{
+    position: absolute;
+    top: 100%;
+    display: none;
+    font-size: var(--font-size-hint);
+    color: var(--color-warning);
+    margin-left: var(--space);
+    margin-top: var(--margin-input-status);
+    // li {
+    //   list-style: circle;
+    //   margin: 5px;
+    // }
+  }
+  &[aria-invalid='true'] {
+    border: 1px solid var(--color-warning);
+    & ~ .error {
+      display: block;
+    }
+  }
+
+}
+label {
+  font-family: var(--font-title);
   font-weight: var(--font-weight-title);
 }
 
@@ -157,6 +195,12 @@ a,
 }
 
 // focus: Classes
+.bar {
+  border: var(--border-card);
+  border-left: none;
+  border-right: none;
+}
+
 .btn {
   background: linear-gradient(
     180deg,
@@ -206,6 +250,98 @@ a,
   @include card();
 }
 
+.close-btn {
+  width: var(--length-close-btn);
+  height: var(--length-close-btn);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-title);
+  border-radius: 50%;
+  border: var(--border-card);
+  background-color: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-card {
+  margin: 0 auto;
+  margin-bottom: var(--space2);
+  max-width: var(--length-course-card-max-width);
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--space2) ;
+    padding-right: 25px;
+    align-items: flex-end;
+  }
+
+  .result {
+    height: 60px;
+    border-top: var(--border-card);
+
+    display: flex;
+
+    > * {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: var(--border-card);
+      > * {
+        flex: 1;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .title {
+      font-family: var(--font-title);
+      font-weight: var(--font-weight-title);
+    }
+  }
+
+  .top {
+    height: 50px;
+    border-bottom: var(--border-card);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space);
+  }
+}
+
+.course-input-con {
+  position: relative;
+  margin-bottom:var(--space2);
+  width: fit-content;
+
+  input {
+    width: 170px;
+  }
+
+  .error {
+    right: 0;
+    text-align: right;
+  }
+  .info {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    font-size: var(--font-size-subtitle);
+    height: 100%;
+    width: 35px;
+  }
+
+}
+
 .note-card {
   @include card();
   box-shadow: none;
@@ -215,27 +351,19 @@ a,
   padding: 0 var(--space);
 }
 
-.result-card{
-  border: var(--border-card);
-  border-left: none;
-  border-right: none;
+.page-container {
+  background-color: var(--color-bg-primary);
+  padding: var(--space2) 0 var(--space4) 0;
+}
+
+.title-bar {
   display: flex;
-  font-size: var(--font-size-subtitle);
-  line-height: var(--line-height-title);
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space);
+  background-color: var(--color-bg-primary);
 
-  > *{
-    flex: 1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-
-  .left{
-    border-right: var(--border-card);
-  }
-  .title{
+  .title {
     font-family: var(--font-title);
     font-weight: var(--font-weight-title);
   }
@@ -259,6 +387,7 @@ a,
 @import './components/TermNote';
 @import './components/InfoNote';
 @import './components/InputCon';
+@import './components/ResultBar';
 
 // focus: Responsive style Import- must be at the bottom
 @import './responsive';
