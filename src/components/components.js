@@ -41,12 +41,14 @@ export function CourseCard({
   id,
   code,
   units,
-  score
+  score,
+  isLCP,// to determine if the course-card is for LCP GPA Calculation
+  position,
 }) {
   return (
     <div className="course-card card">
     <div className="top">
-      <div>1/5</div>
+      <div className="position">{position}</div>
       <CloseButton />
     </div>
     <div className="inputs">
@@ -89,7 +91,7 @@ export function CourseCard({
         <div className="title">Grade</div>
         <div className="value">A+</div>
       </div>
-      <div className="gpe">
+      <div className="gpe">{/* for NBTE GPA calculation hide GPE */}
         <div className="title">GPE</div>
         <div className="value">3.5</div>
       </div>

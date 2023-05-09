@@ -45,8 +45,8 @@ export default function () {
             </p>
             <Spacer axis="y" spaceRatio={3}></Spacer>
 
-            {[0, 0, 0].map(() => (
-              <CourseCard />
+            {[0, 0, 0].map((t, i, a) => (
+              <CourseCard key={i} position={`${i + 1}/${a.length}`} />
             ))}
           </div>
         </div>
