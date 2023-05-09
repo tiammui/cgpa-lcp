@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBars,
-  faShoppingCart,
-  faUserAlt,
-  faUserCircle,
-  faSignOut,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
+import { useStore } from './../utils/stateStore';
+import { DB_PATH } from './../utils/enums';
 import {
   InputCon,
   Spacer,
@@ -23,12 +17,25 @@ import {
 } from './../components/components';
 
 export default function () {
+  const { department, program, semester, semesterId } = useParams();
+  const semesterDoc = useStore((state) => state.semesterDoc);
+  const setSemesterDoc = useStore((state) => state.setSemesterDoc);
+
+  useEffect(() => {
+    if (semesterId) {
+      axios.get(`${DB_PATH.SEMESTERS}${semesterId}`).then((response) => {
+        console.log(response);
+        setSemesterDoc(response.data);
+      });
+    }
+  }, []);
+
   return (
     <div id="">
       <div className="title-bar bar">
         <div className="title">LCP GPA Calculation</div>
         <div className="subtitle">
-          Computer Science Part-time ND Fourth Semester
+          Computer Science Part-time ND Fourth Semester {semesterDoc.shortName}
         </div>
       </div>
       <div className="page-container">

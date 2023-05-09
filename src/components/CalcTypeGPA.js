@@ -73,7 +73,11 @@ export default function () {
           }
           link=""
         />
-        <Button styleType="a" text="proceed" actionHnd={()=>navigate('/gpa/lcp/semesterId')} />
+        <Button
+          styleType="a"
+          text="proceed"
+          actionHnd={() => navigate('/gpa/lcp/semester-id1')}
+        />
       </form>
     </div>
   );
