@@ -89,7 +89,7 @@ select {
   color: var(--color-text-primary);
   box-shadow: inset 0 0 2px var(--color-text-primary);
 
-  & ~ .error{
+  & ~ .error {
     position: absolute;
     top: 100%;
     display: none;
@@ -108,7 +108,6 @@ select {
       display: block;
     }
   }
-
 }
 label {
   font-family: var(--font-title);
@@ -141,6 +140,7 @@ label {
   .disclaimer {
     display: flex;
     justify-content: start;
+    // justify-content: flex-start;
     gap: var(--space);
     text-align: left;
   }
@@ -271,7 +271,7 @@ label {
   .inputs {
     display: flex;
     flex-direction: column;
-    padding-top: var(--space2) ;
+    padding-top: var(--space2);
     padding-right: 25px;
     align-items: flex-end;
   }
@@ -317,7 +317,7 @@ label {
 
 .course-input-con {
   position: relative;
-  margin-bottom:var(--space2);
+  margin-bottom: var(--space2);
   width: fit-content;
 
   input {
@@ -339,7 +339,6 @@ label {
     height: 100%;
     width: 35px;
   }
-
 }
 
 .note-card {
