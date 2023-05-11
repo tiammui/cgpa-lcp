@@ -1,13 +1,13 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { QueryClientProvider, QueryClient } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
+import { QueryClientProvider } from '@tanstack/react-query';
 
 import App from './App';
+import { queryClient } from './services/api/apiHelper';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
-const queryClient = new QueryClient();
 
 root.render(
   <StrictMode>

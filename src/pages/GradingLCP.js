@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 import { useStore } from './../utils/stateStore';
 import { DB_PATH } from './../utils/enums';
+import { useQueryWrapper } from './../services/api/apiHelper';
 import {
   InputCon,
   Spacer,
@@ -18,17 +18,25 @@ import {
 
 export default function () {
   const { department, program, semester, semesterId } = useParams();
-  const semesterDoc = useStore((state) => state.semesterDoc);
-  const setSemesterDoc = useStore((state) => state.setSemesterDoc);
+  let semesterDoc;
+  // const semesterDoc = useStore((state) => state.semesterDoc);
+  // const setSemesterDoc = useStore((state) => state.setSemesterDoc);
 
-  useEffect(() => {
-    if (semesterId) {
-      axios.get(`${DB_PATH.SEMESTERS}${semesterId}`).then((response) => {
-        console.log(response);
-        setSemesterDoc(response.data);
-      });
-    }
-  }, []);
+  if (semesterId) {
+    const { data: response, isLoading } = useQueryWrapper(
+      ['getsemesterDoc'],
+      `${DB_PATH.SEMESTERS}/${semesterId}`,
+      {
+        onSuccess: (response) => {
+          console.log(response);
+        },
+      }
+    );
+
+    semesterDoc = response.data;
+  }
+
+  useEffect(() => {}, []);
 
   return (
     <div id="">

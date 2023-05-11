@@ -1,6 +1,5 @@
-
-export function averageScore(numsArr){
-  return numsArr.reduce((a, b) => +(a) + +(b)) / numsArr.length;
+export function averageScore(numsArr) {
+  return numsArr.reduce((a, b) => +a + +b) / numsArr.length;
 }
 
 /**
@@ -8,7 +7,7 @@ export function averageScore(numsArr){
  * @param {string} str
  */
 export function capitalizeWords(str) {
-  return str.replace(/\b\w/g, function(match) {
+  return str.replace(/\b\w/g, function (match) {
     return match.toUpperCase();
   });
 }
@@ -22,4 +21,3 @@ export function toCamelCase(str) {
     return letter.toUpperCase();
   });
 }
-
