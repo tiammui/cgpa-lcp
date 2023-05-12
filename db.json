@@ -26,7 +26,7 @@
     {
       "id": "course-id1",
       "title": "Basic Hardware Maintenance",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"
@@ -34,7 +34,7 @@
     {
       "id": "course-id2",
       "title": "Seminar on Computer and Society",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"
@@ -42,7 +42,7 @@
     {
       "id": "course-id3",
       "title": "Universal Modelling Language",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"
@@ -50,7 +50,7 @@
     {
       "id": "course-id4",
       "title": "Enterpreneurship",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"
@@ -58,7 +58,7 @@
     {
       "id": "course-id5",
       "title": "Research Method",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"
@@ -66,7 +66,7 @@
     {
       "id": "course-id6",
       "title": "Technical English II",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"
@@ -74,7 +74,7 @@
     {
       "id": "course-id7",
       "title": "Goal",
-      "deptCodeUnitEntries": [],
+      "deptCodeUnitEntries": ["cs","com221",3],
       "keywords": [],
 
       "schoolCode": "LCP"

@@ -4,23 +4,25 @@ import { useParams } from 'react-router-dom';
 // import { useStore } from './../utils/stateStore';
 import { DB_PATH } from './../utils/enums';
 import { useQueryWrapper } from './../services/api/apiHelper';
-import axiosInstance from './../services/api';
+import axiosInstance from './../services/api/.';
 import {
   Spacer,
   InfoNote,
   ResultBar,
   CourseCard,
 } from './../components/components';
-import { log } from 'console';
+import { useStore } from './../utils/stateStore';
 
 export default function () {
   const { department, program, semester, semesterId } = useParams();
+  const courses = useStore((state) => state.lcpCourses);
+  const setCourses = useStore((state) => state.setLcpCourses);
   let semesterDoc;
   // const semesterDoc = useStore((state) => state.semesterDoc);
   // const setSemesterDoc = useStore((state) => state.setSemesterDoc);
 
   const { data: semesterRes, isLoading } = useQueryWrapper(
-    ['getsemesterDoc'],
+    ['getsemesterDoc', semesterId],
     `${DB_PATH.SEMESTERS}/${semesterId}`,
     {
       onSuccess: (response) => {
@@ -45,11 +47,13 @@ export default function () {
   //   }
   // );
   useEffect(() => {
-    Promise.all(
-      semesterDoc?.courses?.map((url) =>
-        axiosInstance.get(`${DB_PATH.COURSES}/${url}`)
-      )
-    ).then((res) => console.log(res));
+    if (semesterDoc) {
+      Promise.all(
+        semesterDoc.courses.map((id) =>
+          axiosInstance.get(`${DB_PATH.COURSES}/${id}`)
+        )
+      ).then((res) => setCourses(res));
+    }
   }, [semesterDoc]);
 
   return (
@@ -74,7 +78,7 @@ export default function () {
             </p>
             <Spacer axis="y" spaceRatio={3}></Spacer>
 
-            {[0, 0, 0].map((t, i, a) => (
+            {courses.map((t, i, a) => (
               <CourseCard key={i} position={`${i + 1}/${a.length}`} />
             ))}
           </div>
