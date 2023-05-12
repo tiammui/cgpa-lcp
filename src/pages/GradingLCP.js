@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useStore } from './../utils/stateStore';
+// import { useStore } from './../utils/stateStore';
 import { DB_PATH } from './../utils/enums';
-import { useQueryWrapper } from './../services/api/apiHelper';
 import {
-  InputCon,
+  useQueryWrapper,
+  useQueriesWrapper,
+} from './../services/api/apiHelper';
+import {
   Spacer,
-  TermNote,
   InfoNote,
-  Button,
   ResultBar,
-  CloseButton,
-  CourseInputCon,
   CourseCard,
 } from './../components/components';
 
@@ -33,8 +31,18 @@ export default function () {
       }
     );
 
-    semesterDoc = response.data;
+    semesterDoc = response?.data;
   }
+
+  const { data: courses } = useQueriesWrapper(
+    ['courses'],
+    semesterDoc.courses,
+    {
+      onSuccess: (response) => {
+        console.log(response);
+      },
+    }
+  );
 
   useEffect(() => {}, []);
 
