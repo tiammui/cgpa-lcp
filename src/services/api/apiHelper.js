@@ -1,6 +1,5 @@
 import {
   useQuery,
-  useQueries,
   useMutation,
   QueryClient,
   QueryKey,
@@ -18,10 +17,11 @@ export const useQueryWrapper = (key, url, options) => {
 };
 
 export const useQueriesWrapper = (key, urls, options) => {
+  if (!urls) return [];
   const getAPICall = async () => {
     const response = await Promise.all(
-      urls.maps((url) => axiosInstance.get(url))
-    );
+      urls.map((url) => axiosInstance.get(url))
+    ).then((res) => res);
     return response;
   };
   return useQuery(key, getAPICall, options);

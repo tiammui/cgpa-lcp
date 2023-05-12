@@ -3,16 +3,15 @@ import { useParams } from 'react-router-dom';
 
 // import { useStore } from './../utils/stateStore';
 import { DB_PATH } from './../utils/enums';
-import {
-  useQueryWrapper,
-  useQueriesWrapper,
-} from './../services/api/apiHelper';
+import { useQueryWrapper } from './../services/api/apiHelper';
+import axiosInstance from './../services/api';
 import {
   Spacer,
   InfoNote,
   ResultBar,
   CourseCard,
 } from './../components/components';
+import { log } from 'console';
 
 export default function () {
   const { department, program, semester, semesterId } = useParams();
@@ -20,23 +19,9 @@ export default function () {
   // const semesterDoc = useStore((state) => state.semesterDoc);
   // const setSemesterDoc = useStore((state) => state.setSemesterDoc);
 
-  if (semesterId) {
-    const { data: response, isLoading } = useQueryWrapper(
-      ['getsemesterDoc'],
-      `${DB_PATH.SEMESTERS}/${semesterId}`,
-      {
-        onSuccess: (response) => {
-          console.log(response);
-        },
-      }
-    );
-
-    semesterDoc = response?.data;
-  }
-
-  const { data: courses } = useQueriesWrapper(
-    ['courses'],
-    semesterDoc.courses,
+  const { data: semesterRes, isLoading } = useQueryWrapper(
+    ['getsemesterDoc'],
+    `${DB_PATH.SEMESTERS}/${semesterId}`,
     {
       onSuccess: (response) => {
         console.log(response);
@@ -44,14 +29,35 @@ export default function () {
     }
   );
 
-  useEffect(() => {}, []);
+  semesterDoc = semesterRes?.data;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // const { data: courses } = useQueriesWrapper(
+  //   ['courses'],
+  //   semesterDoc?.courses?.map((id) => `${DB_PATH.COURSES}/${id}`),
+  //   {
+  //     onSuccess: (response) => {
+  //       console.log(response);
+  //     },
+  //   }
+  // );
+  useEffect(() => {
+    Promise.all(
+      semesterDoc?.courses?.map((url) =>
+        axiosInstance.get(`${DB_PATH.COURSES}/${url}`)
+      )
+    ).then((res) => console.log(res));
+  }, [semesterDoc]);
 
   return (
     <div id="">
       <div className="title-bar bar">
         <div className="title">LCP GPA Calculation</div>
         <div className="subtitle">
-          Computer Science Part-time ND Fourth Semester {semesterDoc.shortName}
+          Computer Science Part-time ND Fourth Semester {semesterDoc?.shortName}
         </div>
       </div>
       <div className="page-container">

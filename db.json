@@ -1,19 +1,83 @@
 {
-  "posts": [
+  "semesters": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "semester-id1",
+      "program": "nd",
+      "programType": "pt",
+      "school": "Departments of Computer",
+      "department": "cs",
+      "semester": 5,
+      "courses": [
+        "course-id1",
+        "course-id2",
+        "course-id3",
+        "course-id4",
+        "course-id5",
+        "course-id6",
+        "course-id7"
+      ],
+      "shortName": "nd pt cs 5",
+
+      "schoolCode": "LCP",
+      "level": "200"
     }
   ],
-  "comments": [
+  "courses": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "course-id1",
+      "title": "Basic Hardware Maintenance",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
+    },
+    {
+      "id": "course-id2",
+      "title": "Seminar on Computer and Society",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
+    },
+    {
+      "id": "course-id3",
+      "title": "Universal Modelling Language",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
+    },
+    {
+      "id": "course-id4",
+      "title": "Enterpreneurship",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
+    },
+    {
+      "id": "course-id5",
+      "title": "Research Method",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
+    },
+    {
+      "id": "course-id6",
+      "title": "Technical English II",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
+    },
+    {
+      "id": "course-id7",
+      "title": "Goal",
+      "deptCodeUnitEntries": [],
+      "keywords": [],
+
+      "schoolCode": "LCP"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
