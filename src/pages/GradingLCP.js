@@ -78,9 +78,20 @@ export default function () {
             </p>
             <Spacer axis="y" spaceRatio={3}></Spacer>
 
-            {courses.map((t, i, a) => (
-              <CourseCard key={i} position={`${i + 1}/${a.length}`} />
-            ))}
+            {courses.map((course, i, a) => {
+              const courseCodeUnitObj = searchCourse(
+                semesterDoc.department,
+                course.deptCodeUnitEntries
+              );
+              return (
+                <CourseCard
+                  key={i}
+                  position={`${i + 1}/${a.length}`}
+                  code={courseCodeUnitObj.code}
+                  units={courseCodeUnitObj.units}
+                />
+              );
+            })}
           </div>
         </div>
         <ResultBar

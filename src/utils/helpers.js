@@ -21,3 +21,12 @@ export function toCamelCase(str) {
     return letter.toUpperCase();
   });
 }
+export function searchCourse(department, deptCodeUnitEntries) {
+  const index = deptCodeUnitEntries.indexOf(department);
+  if (index !== -1) {
+    return { code: deptCodeUnitEntries[index+1], units: deptCodeUnitEntries[index+2] };
+  }
+  return null;
+}
+
+
