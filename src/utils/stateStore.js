@@ -10,7 +10,6 @@ export const useStore = create((set) => ({
         lcpCourses: coursesRes.map((res) => res.data),
       };
     }),
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
+  isLcpGpaCalc:true,
+  setIsLcpGpaCalc: (value) => set((state) => ({ isLcpGpaCalc: value })),
 }));

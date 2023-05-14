@@ -12,6 +12,7 @@ import {
 import { nanoid } from 'nanoid';
 
 import { capitalizeWords } from './../utils/helpers';
+import { useStore } from './../utils/stateStore';
 
 export function Button({ styleType, text, actionHnd }) {
   const emptyFunc = () => {};
@@ -36,22 +37,17 @@ export function CloseButton({ actionHnd }) {
   );
 }
 
-export function CourseCard({
-  id,
-  code,
-  units,
-  score,
-  isLCP,// to determine if the course-card is for LCP GPA Calculation
-  position,
-}) {
+export function CourseCard({ id, code, units, score, position }) {
+  const isLcpGpaCalc = useStore((state) => state.isLcpGpaCalc); // to determine if the course-card is for LCP GPA Calculation
+
   return (
     <div className="course-card card">
-    <div className="top">
-      <div className="position">{position}</div>
-      <CloseButton />
-    </div>
-    <div className="inputs">
-      {/* <div className="course-input-con">
+      <div className="top">
+        <div className="position">{position}</div>
+        {isLcpGpaCalc ? '' : <CloseButton />}
+      </div>
+      <div className="inputs">
+        {/* <div className="course-input-con">
         <label htmlFor="">Course Code:</label>
         <Spacer axis="x" spaceRatio={1}></Spacer>
         <input type="text" aria-invalid="false" />
@@ -63,47 +59,49 @@ export function CourseCard({
           <FontAwesomeIcon icon={faInfoCircle} />
         </div>
       </div> */}
-      <CourseInputCon
-        labelText="course code"
-        inputType="text"
-        inputName="course-id"
-        defaultValue=""
-        changeHnd={()=>(1)}
-      />
-      <CourseInputCon
-        labelText="course units"
-        inputType="number"
-        inputName="course-id"
-        defaultValue=""
-        changeHnd={()=>(1)}
-      />
-      <CourseInputCon
-        labelText="total score"
-        inputType="number"
-        inputName="course-id"
-        defaultValue=""
-        changeHnd={()=>(1)}
-      />
+        <CourseInputCon
+          labelText="course code"
+          inputType="text"
+          inputName="course-id"
+          defaultValue={code.toUpperCase()}
+          disabled={isLcpGpaCalc}
+          changeHnd={() => 1}
+        />
+        <CourseInputCon
+          labelText="course units"
+          inputType="number"
+          inputName="course-id"
+          defaultValue={units}
+          disabled={isLcpGpaCalc}
+          changeHnd={() => 1}
+        />
+        <CourseInputCon
+          labelText="total score"
+          inputType="number"
+          inputName="course-id"
+          defaultValue=""
+          disabled={false}
+          changeHnd={() => 1}
+        />
+      </div>
+      <div className="result">
+        <div className="grade">
+          <div className="title">Grade</div>
+          <div className="value">A+</div>
+        </div>
+        <div className={`gpe ${isLcpGpaCalc ? '' : 'useless'}`}>
+          {/* for NBTE GPA calculation hide GPE */}
+          <div className="title">GPE</div>
+          <div className="value">3.5</div>
+        </div>
+        <div className="gp">
+          <div className="title">GP</div>
+          <div className="value">15 / 20</div>
+        </div>
+      </div>
     </div>
-    <div className="result">
-      <div className="grade">
-        <div className="title">Grade</div>
-        <div className="value">A+</div>
-      </div>
-      <div className="gpe">{/* for NBTE GPA calculation hide GPE */}
-        <div className="title">GPE</div>
-        <div className="value">3.5</div>
-      </div>
-      <div className="gp">
-        <div className="title">GP</div>
-        <div className="value">15 / 20</div>
-      </div>
-    </div>
-  </div>
-
   );
 }
-
 
 export function CourseInputCon({
   inputName,
@@ -112,6 +110,7 @@ export function CourseInputCon({
   changeHnd,
   inputType,
   infoText,
+  disabled,
 }) {
   return (
     <div className="course-input-con">
@@ -121,6 +120,7 @@ export function CourseInputCon({
         type={inputType}
         name={inputName}
         value={defaultValue || ''}
+        disabled={disabled}
         aria-invalid="false"
         onChange={changeHnd}
       />

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 // import { useStore } from './../utils/stateStore';
 import { DB_PATH } from './../utils/enums';
+import { searchCourse } from './../utils/helpers';
 import { useQueryWrapper } from './../services/api/apiHelper';
 import axiosInstance from './../services/api/.';
 import {
@@ -17,6 +18,7 @@ export default function () {
   const { department, program, semester, semesterId } = useParams();
   const courses = useStore((state) => state.lcpCourses);
   const setCourses = useStore((state) => state.setLcpCourses);
+  const setIsLcpGpaCalc = useStore((state) => state.setIsLcpGpaCalc);
   let semesterDoc;
   // const semesterDoc = useStore((state) => state.semesterDoc);
   // const setSemesterDoc = useStore((state) => state.setSemesterDoc);
@@ -35,6 +37,7 @@ export default function () {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setIsLcpGpaCalc(true);
   }, []);
 
   // const { data: courses } = useQueriesWrapper(
