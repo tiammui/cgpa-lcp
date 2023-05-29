@@ -12,7 +12,7 @@ import {
 import { nanoid } from 'nanoid';
 
 import { capitalizeWords } from './../utils/helpers';
-import { useStore } from './../utils/stateStore';
+import { useStoreWrapper } from './../utils/stateStore';
 
 export function Button({ styleType, text, actionHnd }) {
   const emptyFunc = () => {};
@@ -38,7 +38,7 @@ export function CloseButton({ actionHnd }) {
 }
 
 export function CourseCard({ id, code, units, score, position }) {
-  const isLcpGpaCalc = useStore((state) => state.isLcpGpaCalc); // to determine if the course-card is for LCP GPA Calculation
+  const { isLcpGpaCalc } = useStoreWrapper('isLcpGpaCalc'); // to determine if the course-card is for LCP GPA Calculation
 
   return (
     <div className="course-card card">

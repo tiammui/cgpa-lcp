@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-// import { useStore } from './../utils/stateStore';
-import { DB_PATH } from './../utils/enums';
-import { searchCourse } from './../utils/helpers';
+import { DB_PATH, ROUTE_PATHS } from './../utils/enums';
+import { useStoreWrapper } from './../utils/stateStore';
 import { useQueryWrapper } from './../services/api/apiHelper';
 import axiosInstance from './../services/api/.';
 import {
@@ -12,16 +11,15 @@ import {
   ResultBar,
   CourseCard,
 } from './../components/components';
-import { useStore } from './../utils/stateStore';
 
 export default function () {
   const { department, program, semester, semesterId } = useParams();
-  const courses = useStore((state) => state.lcpCourses);
-  const setCourses = useStore((state) => state.setLcpCourses);
-  const setIsLcpGpaCalc = useStore((state) => state.setIsLcpGpaCalc);
+  const { lcpCourses: courses, setLcpCourses: setCourses } =
+    useStoreWrapper('lcpCourses');
+  const { setIsLcpGpaCalc } = useStoreWrapper('isLcpGpaCalc');
   let semesterDoc;
-  // const semesterDoc = useStore((state) => state.semesterDoc);
-  // const setSemesterDoc = useStore((state) => state.setSemesterDoc);
+  // const semesterDoc = useStoreWrapper("semesterDoc");
+  // const setSemesterDoc = useStoreWrapper("setSemesterDoc");
 
   const { data: semesterRes, isLoading } = useQueryWrapper(
     ['getsemesterDoc', semesterId],
@@ -55,7 +53,7 @@ export default function () {
         semesterDoc.courses.map((id) =>
           axiosInstance.get(`${DB_PATH.COURSES}/${id}`)
         )
-      ).then((res) => setCourses(res));
+      ).then((res) => setCourses(res, semesterDoc.department));
     }
   }, [semesterDoc]);
 
@@ -77,26 +75,25 @@ export default function () {
           />
           <div className="pad-1">
             <p>
-              If you're not a student of LCP <a href=""> click here</a>
+              If you're not a student of LCP{' '}
+              <Link to={ROUTE_PATHS.GRADING_NBTE}> click here</Link>
             </p>
             <Spacer axis="y" spaceRatio={3}></Spacer>
 
             {courses.map((course, i, a) => {
-              const courseCodeUnitObj = searchCourse(
-                semesterDoc.department,
-                course.deptCodeUnitEntries
-              );
               return (
                 <CourseCard
                   key={i}
                   position={`${i + 1}/${a.length}`}
-                  code={courseCodeUnitObj.code}
-                  units={courseCodeUnitObj.units}
+                  code={course.code}
+                  units={course.units}
+                  score={course.score}
                 />
               );
             })}
           </div>
         </div>
+        <Spacer axis="y" spaceRatio={2} />
         <ResultBar
           titleLeft="GPA"
           titleRight="Grades"
