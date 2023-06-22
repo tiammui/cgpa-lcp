@@ -3,19 +3,19 @@ import { nanoid } from 'nanoid';
 
 import { searchCourse, capitalizeWords, indexOfObject } from './helpers';
 
-export const useStore = create((set) => ({
+const statesStore = {
   semesterDoc: {},
   setSemesterDoc: (doc) => set((state) => ({ semesterDoc: doc })),
   lcpCourses: [],
   setLcpCourses: (coursesRes, department) =>
     set((state) => ({
       lcpCourses: coursesRes.map((res) => {
-        console.log("tata",res)
+        console.log('tata', res);
         const courseCodeUnitObj = searchCourse(
           department,
           res.data.deptCodeUnitEntries
         );
-        console.log("tata2",courseCodeUnitObj)
+        console.log('tata2', courseCodeUnitObj);
 
         return {
           ...res.data,
@@ -42,7 +42,7 @@ export const useStore = create((set) => ({
     }),
   removeNbteCourse: (id) =>
     set((state) => {
-      let courseIndex = indexOfObject(state.nbteCourses,"id",id);
+      let courseIndex = indexOfObject(state.nbteCourses, 'id', id);
       if (courseIndex == -1) return;
 
       let nbteCourses = [...state.nbteCourses]; // cloning the array to prevent mutating state.nbteCourses directly during splicing.
@@ -51,7 +51,9 @@ export const useStore = create((set) => ({
 
       return { nbteCourses };
     }),
-}));
+};
+
+export const useStore = create((set) => statesStore);
 
 /**
  * The function return an object containing the state and all action corresponding to it.
@@ -60,7 +62,7 @@ export const useStore = create((set) => ({
  * eg. {state, action1, action2, ...} for state with custom actions
  *
  * @param stateName {string} the state name
- * @return {{}}
+ * @return {typeof statesStore}
  */
 export function useStoreWrapper(stateName) {
   if (typeof useStore((state) => state[stateName]) == 'undefined') {
