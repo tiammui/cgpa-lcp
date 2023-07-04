@@ -1,4 +1,3 @@
-
 *,
 *:before,
 *:after {
@@ -8,46 +7,50 @@
   border: none;
 }
 
-html,body{
+html,
+body {
   font-family: var(--font-regular);
+  font-weight: var(--font-weight-regular);
   color: var(--color-text-primary);
   font-size: var(--font-size-default);
   scroll-behavior: smooth;
   position: relative;
   background-color: var(--color-bg-secondary);
 }
-button{
+button {
   transition: 500ms;
   cursor: pointer;
   border: none;
-  font-family: var(--font-title);
+  font-size: var(--font-size-default);
+  font-family: var(--font-regular);
+  color: var(--color-text-primary);
 }
-button:hover, button:focus{
-  background-color: #bbb!important;
-  color: black!important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25)!important;
-  text-shadow: none!important;
+button:hover,
+button:focus {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25) !important;
+  text-shadow: none !important;
 }
-li{
+li {
   list-style: none;
 }
 
-.clear-fix{ /* for empty DIV clearing method */
-  clear: both!important;
-  float: none!important;
-  height: 0!important;
-  padding: 0!important;
-  margin: 0!important;
+.clear-fix {
+  /* for empty DIV clearing method */
+  clear: both !important;
+  float: none !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
-.clearfix::after{
+.clearfix::after {
   content: '.';
   visibility: hidden;
   display: block;
   height: 0;
   clear: both;
 }
-.useless{
-  display: none!important;
+.useless {
+  display: none !important;
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
@@ -62,10 +65,10 @@ li{
   bottom: 30px; /* 30px from the bottom */
   margin-left: -120px; /* Divide value of width by 2 */
   text-align: center; /* Centered text */
-  border: solid 2px ;
-  border-radius:8px; /* Rounded borders */
+  border: solid 2px;
+  border-radius: 8px; /* Rounded borders */
   padding: 16px; /* Padding */
-  font-weight:bold;
+  font-weight: bold;
 }
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 #snackbar.show {
@@ -75,18 +78,18 @@ li{
   However, delay the fade out process for 2.5 seconds */
   animation: fading-in 0.5s, fading-out 0.5s 4s;
 }
-#snackbar.success{
-  background-color: var( --color-secondary);
-  color: white
+#snackbar.success {
+  background-color: var(--color-secondary);
+  color: white;
 }
-#snackbar.warning{
-  background-color: var( --color-attention);
-  color: var( --color-attention-highlight);
-  animation-delay: 0s,10s;
+#snackbar.warning {
+  background-color: var(--color-attention);
+  color: var(--color-attention-highlight);
+  animation-delay: 0s, 10s;
 }
-#snackbar.info{
-  background-color: var( --color-section-bg);
-  color: var( --color-serious)
+#snackbar.info {
+  background-color: var(--color-section-bg);
+  color: var(--color-serious);
 }
 
 .attention {
@@ -95,19 +98,30 @@ li{
 
 /* Animations */
 @keyframes fading-in {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 @keyframes fading-out {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-@keyframes attention{
-  from{
-      outline: red 0px solid;
+  from {
+    bottom: 30px;
+    opacity: 1;
   }
-  to{
-      outline: red 5px solid;
+  to {
+    bottom: 0;
+    opacity: 0;
   }
 }
-
+@keyframes attention {
+  from {
+    outline: red 0px solid;
+  }
+  to {
+    outline: red 5px solid;
+  }
+}

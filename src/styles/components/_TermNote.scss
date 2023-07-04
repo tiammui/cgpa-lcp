@@ -1,0 +1,25 @@
+.term-note {
+  position: relative;
+  max-width: 340px;
+  border-radius: var(--border-radius-note);
+  margin: 0 auto var(--space3) auto;
+  padding: var(--space2) var(--space3);
+
+  p {
+    margin-bottom: var(--space2);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: var(--space);
+    border-radius: var(--border-radius-regular);
+    height: 100%;
+    background-color: var(--color-border-card);
+  }
+}

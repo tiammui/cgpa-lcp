@@ -1,0 +1,24 @@
+.info-note {
+  max-width: 340px;
+  margin: 0 auto var(--space2) auto;
+
+  div:last-child {
+    border-top: var(--border-card);
+    text-align: center;
+    padding: var(--margin-input-status) 0;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      min-width: var(--length-info-icon);
+      height: var(--length-info-icon);
+      font-size: var(--font-size-info-icon);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

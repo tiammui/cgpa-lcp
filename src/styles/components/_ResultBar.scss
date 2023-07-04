@@ -1,0 +1,21 @@
+.result-bar {
+  display: flex;
+  font-size: var(--font-size-subtitle);
+  line-height: var(--line-height-title);
+
+  > * {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left {
+    border-right: var(--border-card);
+  }
+  .title {
+    font-family: var(--font-title);
+    font-weight: var(--font-weight-title);
+  }
+}
